@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!--
+    A pulse trace: legible at 16px, and it points at the work (real-time
+    signal systems) rather than being a generic monogram. Solid accent fill so
+    it holds up against both light and dark browser chrome.
+  -->
+  <rect width="32" height="32" rx="7" fill="#2448d8"/>
+  <path
+    d="M5 16h5l2.5-6.5L17 22.5l2.5-6.5H27"
+    fill="none"
+    stroke="#ffffff"
+    stroke-width="2.6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>
