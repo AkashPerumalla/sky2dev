@@ -7,6 +7,7 @@ import {
   formatDuration,
   isoDate,
 } from "@/lib/format";
+import { cn } from "@/lib/cn";
 import { Badge, ExternalLink, Meta, MetaDot, TagRow } from "./ui";
 
 /**
@@ -106,22 +107,45 @@ const STATUS_TONE = {
   archived: "neutral",
 } as const;
 
-/** Project card — status, stack, and direct links to repo and demo. */
+/** A coloured dot carries status faster than reading the badge text. */
+const STATUS_DOT = {
+  active: "bg-accent",
+  shipped: "bg-emerald-500",
+  experiment: "bg-amber-500",
+  archived: "bg-faint",
+} as const;
+
+/**
+ * Project card.
+ *
+ * The whole card reacts on hover (border, lift, shadow, title colour) so the
+ * click target reads as one object rather than a box containing a link. The
+ * anchor is still only the title, which keeps the markup valid and the tech
+ * badges selectable.
+ */
 export function ProjectCard({ entry }: { entry: Entry<"projects"> }) {
   const data = entry.data as ProjectData;
 
   return (
-    <li className="group flex flex-col rounded-lg border border-line bg-elevated p-5 transition-colors hover:border-accent/40">
+    <li className="group relative flex flex-col rounded-xl border border-line bg-elevated p-5 transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-0.5 hover:border-accent/40 hover:shadow-[0_8px_30px_-12px_rgb(0_0_0/0.18)] dark:hover:shadow-[0_8px_30px_-12px_rgb(0_0_0/0.6)]">
       <div className="flex items-start justify-between gap-3">
         <h3 className="text-[0.9375rem] font-medium">
           <Link
             href={entry.href}
-            className="transition-colors group-hover:text-accent"
+            /* Stretches the anchor over the whole card: one hit area, valid markup. */
+            className="after:absolute after:inset-0 after:content-[''] group-hover:text-accent"
           >
             {data.title}
           </Link>
         </h3>
-        <Badge tone={STATUS_TONE[data.status]}>{data.status}</Badge>
+
+        <span className="flex shrink-0 items-center gap-1.5">
+          <span
+            aria-hidden="true"
+            className={cn("size-1.5 rounded-full", STATUS_DOT[data.status])}
+          />
+          <Badge tone={STATUS_TONE[data.status]}>{data.status}</Badge>
+        </span>
       </div>
 
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
@@ -138,12 +162,23 @@ export function ProjectCard({ entry }: { entry: Entry<"projects"> }) {
         </ul>
       )}
 
-      {(data.repo || data.url) && (
-        <div className="mt-4 flex items-center gap-4 border-t border-line pt-3.5 text-xs text-muted">
-          {data.url && <ExternalLink href={data.url}>Live</ExternalLink>}
-          {data.repo && <ExternalLink href={data.repo}>Source</ExternalLink>}
-        </div>
-      )}
+      <div className="mt-4 flex items-center gap-4 border-t border-line pt-3.5 text-xs text-muted">
+        {data.url && (
+          <span className="relative z-10">
+            <ExternalLink href={data.url}>Live</ExternalLink>
+          </span>
+        )}
+        {data.repo && (
+          <span className="relative z-10">
+            <ExternalLink href={data.repo}>Source</ExternalLink>
+          </span>
+        )}
+
+        {/* Nudges right on hover, hinting the whole card is clickable. */}
+        <span className="ml-auto text-faint transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-accent">
+          Read →
+        </span>
+      </div>
     </li>
   );
 }

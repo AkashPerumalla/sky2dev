@@ -46,6 +46,18 @@ export const site = {
     { label: "About", href: "/about" },
   ],
 
+  /**
+   * The proof row under the hero. Four at most, or they stop reading as
+   * highlights. Each should be checkable: a number, a programme, a deployment.
+   * Vague claims ("passionate about quality") actively cost credibility here.
+   */
+  highlights: [
+    { value: "2+ yrs", label: "Production embedded systems" },
+    { value: "4", label: "Systems shipped end to end" },
+    { value: "2000+/s", label: "Samples on a live patient monitor" },
+    { value: "iDEX 19", label: "Defence innovation programme" },
+  ],
+
   /** Shown in the footer. */
   startYear: 2026,
 } as const;

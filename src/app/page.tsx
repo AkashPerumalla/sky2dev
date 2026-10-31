@@ -20,6 +20,9 @@ export default function HomePage() {
   const writing = getCollection("writing");
   const notes = getCollection("notes");
 
+  // Newest project still marked active; drives the status pill.
+  const nowBuilding = projects.find((p) => p.data.status === "active");
+
   const current = work[0];
   const currentData = current?.data as WorkData | undefined;
   const isCurrentRole = currentData && !currentData.end;
@@ -31,13 +34,35 @@ export default function HomePage() {
   ].slice(0, 4);
 
   return (
-    <div className="space-y-16">
-      <section>
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+    <div className="space-y-20">
+      <section className="hero-grid">
+        {/*
+          A live signal that the site is maintained. Pulled from the newest
+          active project rather than hardcoded, so it can never go stale while
+          the content moves on.
+        */}
+        {nowBuilding && (
+          <Link
+            href={nowBuilding.href}
+            className="rise group mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface py-1.5 pr-4 pl-3 text-xs text-muted transition-colors hover:border-accent/40 hover:text-fg"
+          >
+            <span className="relative flex size-1.5 shrink-0">
+              <span className="ping-soft absolute inline-flex size-full rounded-full bg-accent" />
+              <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
+            </span>
+            {/* "Currently building" plus a long project title wraps the pill
+                to two lines on a phone, so the label shortens there. */}
+            <span className="hidden sm:inline">Currently building</span>
+            <span className="sm:hidden">Now</span>
+            <span className="text-fg">{nowBuilding.data.title}</span>
+          </Link>
+        )}
+
+        <h1 className="rise text-4xl font-semibold tracking-[-0.03em] text-balance [animation-delay:40ms] sm:text-6xl">
           {site.name}
         </h1>
 
-        <p className="mt-2 text-[0.9375rem] text-muted">
+        <p className="rise mt-3 text-base text-muted [animation-delay:80ms] sm:text-lg">
           {site.role}
           {isCurrentRole && currentData && (
             <>
@@ -51,15 +76,28 @@ export default function HomePage() {
               )}
             </>
           )}
+          <span className="text-faint"> · {site.specialty}</span>
         </p>
 
-        <p className="mt-1 text-[0.9375rem] text-faint">{site.specialty}</p>
-
-        <p className="mt-6 max-w-prose leading-relaxed text-muted">
+        <p className="rise mt-7 max-w-prose text-[1.0625rem] leading-relaxed text-muted text-pretty [animation-delay:120ms]">
           {site.bio}
         </p>
 
-        <ul className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+        {/* Proof row. Checkable numbers do more here than any adjective. */}
+        <dl className="rise mt-10 grid grid-cols-2 gap-x-6 gap-y-7 border-y border-line py-7 [animation-delay:160ms] sm:grid-cols-4">
+          {site.highlights.map((item) => (
+            <div key={item.label}>
+              <dt className="text-xl font-semibold tracking-tight text-fg tabular sm:text-2xl">
+                {item.value}
+              </dt>
+              <dd className="mt-1.5 text-xs leading-snug text-faint">
+                {item.label}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        <ul className="rise mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm [animation-delay:200ms]">
           {site.socials.map((social) => (
             <li key={social.label}>
               <ExternalLink href={social.href} className="text-muted">

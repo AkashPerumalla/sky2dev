@@ -2,8 +2,9 @@
 title: This site
 summary: A statically exported Next.js site where every piece of content is validated Markdown held in git.
 date: 2026-10-31
-status: active
+status: shipped
 repo: https://github.com/AkashPerumalla/sky2dev
+url: https://sky2dev.dev
 tech: [Next.js, TypeScript, Tailwind, MDX]
 tags: [web, typescript]
 ---
