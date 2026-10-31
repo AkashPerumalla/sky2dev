@@ -4,6 +4,9 @@ A continuously-updated personal site: work history, projects, writing, and
 short notes. Content is Markdown in this repository; the site is a static
 export, so every page is plain HTML with no server behind it.
 
+For the full manual — adding content, deploying, troubleshooting, maintenance
+schedule and recommended improvements — see [docs/GUIDE.md](docs/GUIDE.md).
+
 ## Quick start
 
 ```bash
