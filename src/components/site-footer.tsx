@@ -28,7 +28,7 @@ export function SiteFooter() {
             </li>
           ))}
           <li>
-            <EmailLink className="transition-colors hover:text-fg" />
+            <EmailLink className="transition-colors hover:text-fg" showIcon={false} />
           </li>
           <li>
             <Link href="/rss.xml" className="transition-colors hover:text-fg">

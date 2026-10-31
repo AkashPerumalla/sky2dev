@@ -20,9 +20,17 @@ import { cn } from "@/lib/cn";
 export function EmailLink({
   className,
   label = "Email",
+  showIcon = true,
 }: {
   className?: string;
   label?: string;
+  /**
+   * The icon earns its place only where neighbouring links also carry one —
+   * the hero row, where GitHub and LinkedIn show an external-link arrow. In
+   * the footer those are plain text, so an icon here would be the odd one out.
+   * The label still swaps to "Copied", so feedback survives without it.
+   */
+  showIcon?: boolean;
 }) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -95,28 +103,30 @@ export function EmailLink({
         </span>
       </span>
 
-      <svg
-        className={cn(
-          "size-3 shrink-0 transition-opacity duration-150",
-          copied ? "opacity-100" : "opacity-40",
-        )}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.25"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        aria-hidden="true"
-      >
-        {copied ? (
-          <path d="M20 6 9 17l-5-5" />
-        ) : (
-          <>
-            <rect x="9" y="9" width="12" height="12" rx="2" />
-            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-          </>
-        )}
-      </svg>
+      {showIcon && (
+        <svg
+          className={cn(
+            "size-3 shrink-0 transition-opacity duration-150",
+            copied ? "opacity-100" : "opacity-40",
+          )}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.25"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden="true"
+        >
+          {copied ? (
+            <path d="M20 6 9 17l-5-5" />
+          ) : (
+            <>
+              <rect x="9" y="9" width="12" height="12" rx="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </>
+          )}
+        </svg>
+      )}
 
       {/* Announced to screen readers; the visual swap above is silent to them. */}
       <span role="status" aria-live="polite" className="sr-only">
