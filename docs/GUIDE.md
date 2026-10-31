@@ -135,6 +135,16 @@ whole site means editing that one block.
 **Article typography** — the `.prose` block in the same file. Hand-written
 rather than a plugin, so every rule is visible and editable.
 
+**The icon** — `src/app/icon.svg` is the browser favicon;
+`src/app/apple-icon.tsx` generates the iOS home-screen PNG from the same mark.
+Change both if you change the logo.
+
+**Social cards** — one shared layout in [`src/lib/og.tsx`](../src/lib/og.tsx),
+used by the site card and by per-entry cards in each collection. Edit that file
+to restyle every card at once. They are rendered at build time by satori, which
+supports a flexbox-only subset of CSS: any element with more than one child
+needs an explicit `display: flex`, or the build fails with a confusing error.
+
 ---
 
 ## 6. How deployment works
@@ -216,6 +226,11 @@ sentinel slug that renders a 404. If it reappears, that helper has been bypassed
 Assets are being requested from a path that doesn't exist. Either the custom
 domain came unset on the repo, or something set `NEXT_PUBLIC_BASE_PATH`.
 
+**Build fails: "export const dynamic … not configured on route"**
+Any route that generates a file rather than a page (sitemap, robots, RSS, the
+icons, the social cards) needs `export const dynamic = "force-static"` under
+`output: "export"`. Add it to the route the error names.
+
 **Deploy job fails, build job passes**
 Almost always a Pages configuration problem rather than a code problem. Check
 Settings → Pages → Source is "GitHub Actions".
@@ -256,42 +271,30 @@ action and v4 is current, so there's nothing to do yet.
 
 In the order I'd do them.
 
-### High value
-
-**1. A favicon.** There is none, so browsers show a default globe icon in tabs
-and bookmarks. Add `src/app/icon.svg` (or `icon.png`, at least 180×180) and
-Next generates the link tags automatically.
-
-**2. Social card images.** `og:image` is absent, so a link shared to LinkedIn
-or X renders as a bare text block with no image. For a portfolio this is the
-single biggest missed opportunity, because LinkedIn is where it'll be shared.
-Next can generate them per page at build time via `opengraph-image.tsx`, using
-the entry title and your name. Works with static export.
-
 ### Worth doing
 
-**3. Real project dates.** Currently spread plausibly across your Avantel
+**1. Real project dates.** Currently spread plausibly across your Avantel
 tenure, since the resume dates roles but not systems. The one thing on the site
 only you can correct.
 
-**4. Avantel's company URL.** Add `companyUrl:` to `content/work/avantel.md`
+**2. Avantel's company URL.** Add `companyUrl:` to `content/work/avantel.md`
 and the company name becomes a link.
 
-**5. Your voice in the entries.** The prose is mine, rewritten to read plainly.
+**3. Your voice in the entries.** The prose is mine, rewritten to read plainly.
 Anyone who has spoken to you will notice. The patient monitor page is the one
 most likely to be read closely.
 
 ### Optional
 
-**6. Analytics.** If you want to know whether anyone reads it. A privacy-
+**4. Analytics.** If you want to know whether anyone reads it. A privacy-
 respecting option (Plausible, Umami, Cloudflare Web Analytics) avoids a cookie
 banner entirely.
 
-**7. Pin the runner image.** The workflow uses `ubuntu-latest`, which migrates
+**5. Pin the runner image.** The workflow uses `ubuntu-latest`, which migrates
 to Ubuntu 26 in October 2026. Pinning `ubuntu-24.04` trades automatic updates
 for predictability.
 
-**8. A `/uses` or `/now` page.** Cheap to add, and both are commonly linked.
+**6. A `/uses` or `/now` page.** Cheap to add, and both are commonly linked.
 
 ---
 
