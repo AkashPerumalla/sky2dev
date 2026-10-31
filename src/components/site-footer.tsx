@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/site.config";
+import { EmailLink } from "./email-link";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -27,12 +28,7 @@ export function SiteFooter() {
             </li>
           ))}
           <li>
-            <a
-              href={`mailto:${site.email}`}
-              className="transition-colors hover:text-fg"
-            >
-              Email
-            </a>
+            <EmailLink className="transition-colors hover:text-fg" />
           </li>
           <li>
             <Link href="/rss.xml" className="transition-colors hover:text-fg">

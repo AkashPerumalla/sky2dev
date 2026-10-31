@@ -5,6 +5,7 @@ import type { WorkData } from "@/lib/content/schema";
 import { formatDateRange } from "@/lib/format";
 import { EntryList, NoteRow, ProjectGrid } from "@/components/entry-list";
 import { ExternalLink, SectionHeading } from "@/components/ui";
+import { EmailLink } from "@/components/email-link";
 
 /**
  * Home page.
@@ -67,19 +68,7 @@ export default function HomePage() {
             </li>
           ))}
           <li>
-            {/*
-              Labelled "Email" rather than showing the raw address, so it reads
-              as one of a row of destinations alongside GitHub and LinkedIn.
-              The address itself stays visible as selectable text on /about,
-              for anyone whose machine doesn't handle mailto: links.
-            */}
-            <a
-              href={`mailto:${site.email}`}
-              title={site.email}
-              className="text-muted transition-colors hover:text-accent"
-            >
-              Email
-            </a>
+            <EmailLink className="text-muted transition-colors hover:text-accent" />
           </li>
         </ul>
       </section>
