@@ -1,6 +1,6 @@
 ---
 title: This site
-summary: A statically exported Next.js site where all content is validated Markdown in git.
+summary: A statically exported Next.js site where every piece of content is validated Markdown held in git.
 date: 2026-10-31
 status: active
 repo: https://github.com/AkashPerumalla/sky2dev
@@ -13,9 +13,9 @@ maintenance burden.
 
 ## The constraint
 
-Most personal sites die the same way: adding a post means touching component
-code, so the friction quietly rises until you stop. The fix is to make content
-*data*, not code.
+Most personal sites die the same way. Adding a post means editing component
+code, so friction rises quietly until publishing stops being worth the evening
+it costs. Treating content as data rather than code removes that.
 
 Adding an entry here is one file:
 
@@ -23,9 +23,9 @@ Adding an entry here is one file:
 npm run new writing "The thing I learned"
 ```
 
-That writes a Markdown file with valid frontmatter. Nothing else needs to change
-— the listing page, the tag index, the sitemap and the RSS feed all pick it up
-from the filesystem on the next build.
+That writes a Markdown file with valid frontmatter. Nothing else needs to
+change. The listing page, the tag index, the sitemap and the RSS feed all pick
+it up from the filesystem on the next build.
 
 ## Validated frontmatter
 
@@ -42,11 +42,12 @@ export const projectSchema = base.extend({
 });
 ```
 
-That one guarantee is what makes the site safe to ignore for six months.
+That single guarantee is what makes the site safe to leave alone for six
+months at a time.
 
 ## Why static export
 
 `output: "export"` means every page is pre-rendered HTML. The same `out/`
-directory deploys to GitHub Pages, Cloudflare Pages, Netlify or Vercel with no
-code change, so switching hosts costs one DNS record. There's no server to
-patch and no runtime to go stale.
+directory deploys to GitHub Pages, Cloudflare Pages, Netlify or Vercel without
+a code change, so switching hosts costs one DNS record. No server needs
+patching and no runtime goes stale.

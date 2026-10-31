@@ -1,35 +1,34 @@
 ---
 title: Satellite Ground Station Hub
-summary: A unified monitoring and control platform that replaced 8–10 vendor-specific M&C tools with a single Spring Boot interface.
+summary: A unified monitoring and control platform that replaced 8 to 10 vendor-specific M&C tools with a single Spring Boot interface.
 date: 2026-02-01
 status: shipped
 tech: [Spring Boot, REST, JWT, SNMP, UDP, SPI, Serial]
 tags: [spring-boot, backend, protocols, satellite, java]
 ---
 
-A ground station runs equipment from many vendors, and each vendor ships its own
-monitoring and control tool. That means 8–10 separate interfaces, 8–10 ways of
-expressing the same concepts, and an operator holding the translation in their
-head.
+A ground station runs equipment from many vendors, and each vendor ships its
+own monitoring and control software. That left operators moving between 8 to 10
+separate tools, each expressing the same concepts differently, with the
+translation held in someone's head.
 
-I designed a unified M&C platform that replaced all of them with a single Spring
-Boot interface, secured via JWT and exposed over REST APIs.
+I designed a unified M&C platform to replace them with one Spring Boot
+interface, secured with JWT and exposed over REST APIs.
 
-## The part that made it last
+## Protocol abstraction
 
-The temptation in an integration project is to write one adapter per device. It
-works, and it produces a codebase where the eleventh device costs exactly as
-much as the first.
+The obvious approach is one adapter per device. It works, and it produces a
+codebase where the eleventh device costs as much to add as the first.
 
-Instead I built reusable **protocol abstraction layers** — SNMP (including trap
-handling), UDP, SPI and serial. Equipment is integrated by composing against the
-protocol it speaks, not by writing bespoke code for the box. Onboarding a new
-piece of equipment got **25% cheaper** as a result, and that figure improves as
-more devices land on the existing layers.
+I built reusable protocol abstraction layers instead, covering SNMP with trap
+handling, UDP, SPI and serial communication. Equipment is integrated by
+composing against the protocol it already speaks rather than by writing bespoke
+code for the box. Onboarding new equipment became roughly 25% cheaper, and that
+figure improves as more devices land on layers that already exist.
 
-## The lesson
+## What I took from it
 
-The vendor-specific tools weren't badly built — they were each solving their own
-problem correctly. The cost was entirely in the seams between them. A lot of
-integration work is like that: nothing is broken, and the system is still hard
-to operate.
+None of the vendor tools were badly built. Each solved its own problem
+correctly. The entire cost sat in the gaps between them, which is true of a
+great deal of integration work: nothing is broken, and the system as a whole is
+still difficult to operate.

@@ -6,7 +6,7 @@ import { EmptyState, PageHeader, SectionHeading } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Things I've built — shipped, abandoned, and in progress.",
+  description: "Things I've built: shipped, abandoned, and in progress.",
   alternates: { canonical: "/projects" },
 };
 
@@ -25,7 +25,7 @@ export default function ProjectsPage() {
     <>
       <PageHeader
         title="Projects"
-        description="Things I've built. Experiments and dead ends are here too — they're usually where the learning was."
+        description="Things I've built. Experiments and dead ends are here too, since that is usually where the learning was."
       />
 
       {entries.length === 0 && <EmptyState>No projects yet.</EmptyState>}

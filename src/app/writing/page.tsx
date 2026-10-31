@@ -16,7 +16,7 @@ export default function WritingPage() {
     <>
       <PageHeader
         title="Writing"
-        description="Longer pieces — things I've thought about enough to argue a position on."
+        description="Longer pieces. Things I've thought about enough to argue a position on."
       />
       {entries.length > 0 ? (
         <EntryList entries={entries} />

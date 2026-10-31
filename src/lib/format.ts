@@ -28,9 +28,9 @@ export function formatMonthYear(date: Date) {
   }).format(date);
 }
 
-/** `Jan 2024 — Present` */
+/** `Jan 2024 – Present` */
 export function formatDateRange(start: Date, end?: Date) {
-  return `${formatMonthYear(start)} — ${end ? formatMonthYear(end) : "Present"}`;
+  return `${formatMonthYear(start)} – ${end ? formatMonthYear(end) : "Present"}`;
 }
 
 /** `2026` — for the footer and year-grouped listings. */

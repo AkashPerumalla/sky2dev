@@ -16,7 +16,7 @@ export default function TagsPage() {
     <>
       <PageHeader
         title="Tags"
-        description="Tags are shared across work, projects, writing and notes — so a topic shows every angle I've come at it from."
+        description="Tags are shared across work, projects, writing and notes, so a topic shows every angle I've come at it from."
       />
 
       {tags.length > 0 ? (
@@ -36,7 +36,7 @@ export default function TagsPage() {
           ))}
         </ul>
       ) : (
-        <EmptyState>No tags yet — add some to your frontmatter.</EmptyState>
+        <EmptyState>No tags yet. Add some to your frontmatter.</EmptyState>
       )}
     </>
   );

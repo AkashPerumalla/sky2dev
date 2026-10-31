@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { site } from "@/site.config";
 import { PageHeader, ExternalLink } from "@/components/ui";
+import { EmailLink } from "@/components/email-link";
 
 export const metadata: Metadata = {
   title: "About",
@@ -72,20 +73,20 @@ export default function AboutPage() {
           on embedded Android and real-time systems.
         </p>
         <p>
-          Most of what I build sits lower than the application layer — native
-          code talking to hardware over serial, SPI, UART and I2C, AOSP
-          modifications to grant an application access the platform normally
-          withholds, and the service layers that carry that data somewhere
-          useful. I&rsquo;ve taken four systems from requirements to deployment,
-          including a patient monitor in active clinical use and a handheld
-          satellite phone built under India&rsquo;s iDEX defence innovation
-          programme.
+          Most of what I build sits below the application layer. Native code
+          talking to hardware over serial, SPI, UART and I2C. AOSP modifications
+          that grant an application access the platform normally withholds. The
+          service layers that carry the resulting data somewhere useful. I have
+          taken four systems from requirements through to deployment, including
+          a patient monitor now in clinical use and a handheld satellite phone
+          built under India&rsquo;s iDEX defence innovation programme.
         </p>
         <p>
-          The through-line is systems where being approximately right
-          isn&rsquo;t good enough: a dropped sample on a patient monitor, a
-          failed handover on a satcom link, two radar contacts where there is one
-          vessel. That constraint is most of why the work is interesting.
+          What connects them is that approximately right is not good enough. A
+          dropped sample on a patient monitor, a failed handover on a satcom
+          link, two radar contacts where only one vessel exists: none of these
+          are cosmetic problems. That constraint is most of what makes the work
+          interesting.
         </p>
 
         <h2>What&rsquo;s here</h2>
@@ -95,19 +96,19 @@ export default function AboutPage() {
         </p>
         <ul>
           <li>
-            <strong>Work</strong> — roles I&rsquo;ve held and what I actually
+            <strong>Work</strong>: roles I&rsquo;ve held and what I actually
             did in them.
           </li>
           <li>
-            <strong>Projects</strong> — systems I&rsquo;ve built, including the
+            <strong>Projects</strong>: systems I&rsquo;ve built, including the
             ones still in progress.
           </li>
           <li>
-            <strong>Writing</strong> — longer pieces, where I&rsquo;ve thought
+            <strong>Writing</strong>: longer pieces, where I&rsquo;ve thought
             something through enough to take a position.
           </li>
           <li>
-            <strong>Notes</strong> — short learnings, captured as they happen.
+            <strong>Notes</strong>: short learnings, captured as they happen.
           </li>
         </ul>
 
@@ -159,17 +160,17 @@ export default function AboutPage() {
             </li>
           ))}
           <li>
-            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <EmailLink />
           </li>
         </ul>
 
         <h2>This site</h2>
         <p>
           Built with Next.js and statically exported, so every page is plain
-          HTML. Content is Markdown in a git repository — no database, no CMS,
-          nothing to keep running. Syntax highlighting and typography are
-          resolved at build time, so no JavaScript is needed to read anything
-          here.
+          HTML. Content is Markdown held in a git repository, with no database,
+          no CMS and nothing to keep running. Syntax highlighting and typography
+          are resolved at build time, so reading anything here requires no
+          JavaScript.
         </p>
       </div>
     </div>

@@ -69,7 +69,7 @@ export function EmailLink({
     <a
       href={`mailto:${site.email}`}
       onClick={handleClick}
-      title={`${site.email} — click to copy`}
+      title={`${site.email} (click to copy)`}
       className={cn("group inline-flex items-center gap-1", className)}
     >
       {/*

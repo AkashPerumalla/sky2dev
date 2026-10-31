@@ -16,7 +16,7 @@ export default function NotesPage() {
     <>
       <PageHeader
         title="Notes"
-        description="Short learnings, logged as they happen. Lower bar than Writing on purpose — a note can be three sentences."
+        description="Short learnings, logged as they happen. The bar is deliberately lower than Writing; a note can be three sentences."
       />
       {entries.length > 0 ? (
         <ul>

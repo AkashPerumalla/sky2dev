@@ -21,11 +21,11 @@ export const site = {
   url: "https://sky2dev.dev",
 
   /** The two-or-three sentence pitch on the home page. */
-  bio: "I build production embedded Android and real-time systems — from hardware interfacing over serial, SPI, UART and I2C, through AOSP platform modification, to the Spring Boot services behind them. Four systems architected from requirements to deployment, including a patient monitor in active clinical use and a handheld satellite phone built under India's iDEX defence innovation programme.",
+  bio: "I build embedded Android and real-time systems: hardware interfacing over serial, SPI, UART and I2C, AOSP platform modification, and the Spring Boot services that sit above them. I have taken four systems from requirements through to deployment, including a patient monitor now in clinical use and a handheld satellite phone built under India's iDEX defence innovation programme.",
 
   /** Used for <meta description> and the RSS channel description. */
   description:
-    "Akash Perumalla — software engineer working on embedded Android, real-time systems, and the services behind them. Projects, writing, and notes on what I'm learning.",
+    "Akash Perumalla, a software engineer working on embedded Android, real-time systems and the services above them. Projects, writing and notes on what I'm learning.",
 
   email: "akashperumalla0215@gmail.com",
 

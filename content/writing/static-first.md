@@ -3,17 +3,17 @@ title: Static until proven otherwise
 summary: Why I reach for a pre-rendered page before anything that needs a server running.
 date: 2026-09-05
 tags: [web, architecture, performance]
-draft: true # written as a format example — replace or delete
+draft: true # written as a format example; replace or delete
 ---
 
 A pre-rendered HTML file has a property nothing else does: it keeps working.
-Not "has good uptime" — there is nothing in the request path that can be down.
+Not "has good uptime". There is nothing in the request path that can be down.
 
 ## What you give up
 
 Honest accounting first. Going static costs you:
 
-- Server-side request handling — no API routes, no form POSTs.
+- Server-side request handling, so no API routes and no form POSTs.
 - On-demand revalidation and per-request personalization.
 - Runtime image optimization.
 
@@ -41,7 +41,7 @@ renders in 2036.
 ## The test
 
 Before adding anything that needs a server, I ask whether the page differs per
-visitor. Usually it doesn't — it differs per *deploy*, and that's a build-time
+visitor. Usually it doesn't. It differs per *deploy*, which is a build-time
 problem wearing a runtime costume.
 
 Start static. Reach for a server when a real requirement forces it, and not
