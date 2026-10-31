@@ -106,15 +106,25 @@ deploys to any of these without a code change:
 | **Netlify** | Connect repo. [`netlify.toml`](netlify.toml) supplies the settings. |
 | **Vercel** | Connect repo. Auto-detected; no config needed. |
 
-### Before you go live
+### Domain
 
-1. Set `url` in `src/site.config.ts` to your domain — canonical URLs, the
-   sitemap, and RSS all derive from it.
-2. Fill in `socials` and `email` in the same file.
-3. **Custom domain on GitHub Pages:** add a `public/CNAME` file containing just
-   your domain.
-4. **Repo subpath instead of a domain** (`user.github.io/repo`): set
-   `NEXT_PUBLIC_BASE_PATH=/repo` in the workflow's build step.
+The site is configured for **sky2dev.dev** — `url` in `src/site.config.ts`
+drives canonical URLs, the sitemap and RSS, and `public/CNAME` carries the
+domain for GitHub Pages.
+
+If you deploy somewhere other than GitHub Pages, set the custom domain in that
+host's dashboard instead; `public/CNAME` is inert there and can stay.
+
+DNS, once you've picked a host:
+
+| Host | Records |
+|---|---|
+| GitHub Pages | Four `A` records to GitHub's apex IPs, plus `CNAME` on `www` → `<user>.github.io` |
+| Cloudflare Pages | Add the domain in the dashboard; records are created for you |
+| Netlify / Vercel | Add the domain in the dashboard and follow the records it shows |
+
+If you ever serve from a repo subpath instead (`user.github.io/repo`), set
+`NEXT_PUBLIC_BASE_PATH=/repo` in the workflow's build step.
 
 `public/.nojekyll` is required for GitHub Pages — without it, Jekyll strips the
 `_next/` directory and the site loads unstyled.

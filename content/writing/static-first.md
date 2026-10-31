@@ -3,6 +3,7 @@ title: Static until proven otherwise
 summary: Why I reach for a pre-rendered page before anything that needs a server running.
 date: 2026-09-05
 tags: [web, architecture, performance]
+draft: true # written as a format example — replace or delete
 ---
 
 A pre-rendered HTML file has a property nothing else does: it keeps working.

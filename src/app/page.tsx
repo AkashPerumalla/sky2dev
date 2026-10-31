@@ -4,11 +4,7 @@ import { getCollection } from "@/lib/content";
 import type { WorkData } from "@/lib/content/schema";
 import { formatDateRange } from "@/lib/format";
 import { EntryList, NoteRow, ProjectGrid } from "@/components/entry-list";
-import {
-  EmptyState,
-  ExternalLink,
-  SectionHeading,
-} from "@/components/ui";
+import { ExternalLink, SectionHeading } from "@/components/ui";
 
 /**
  * Home page.
@@ -56,6 +52,8 @@ export default function HomePage() {
           )}
         </p>
 
+        <p className="mt-1 text-[0.9375rem] text-faint">{site.specialty}</p>
+
         <p className="mt-6 max-w-prose leading-relaxed text-muted">
           {site.bio}
         </p>
@@ -79,45 +77,37 @@ export default function HomePage() {
         </ul>
       </section>
 
-      <section>
-        <SectionHeading title="Writing" href="/writing" />
-        {writing.length > 0 ? (
-          <EntryList entries={writing.slice(0, 4)} />
-        ) : (
-          <EmptyState>
-            Nothing published yet. Add a file to{" "}
-            <code className="font-mono">content/writing/</code>.
-          </EmptyState>
-        )}
-      </section>
-
-      <section>
-        <SectionHeading title="Projects" href="/projects" />
-        {shownProjects.length > 0 ? (
+      {/*
+        Projects lead: they're the strongest material and the only section
+        guaranteed to have content. Writing and notes are omitted entirely while
+        empty rather than showing a placeholder — an empty section high on the
+        page reads as neglect, and these fill themselves the moment a file
+        lands in content/.
+      */}
+      {shownProjects.length > 0 && (
+        <section>
+          <SectionHeading title="Projects" href="/projects" />
           <ProjectGrid entries={shownProjects} />
-        ) : (
-          <EmptyState>
-            Nothing here yet. Add a file to{" "}
-            <code className="font-mono">content/projects/</code>.
-          </EmptyState>
-        )}
-      </section>
+        </section>
+      )}
 
-      <section>
-        <SectionHeading title="Recent notes" href="/notes" />
-        {notes.length > 0 ? (
+      {writing.length > 0 && (
+        <section>
+          <SectionHeading title="Writing" href="/writing" />
+          <EntryList entries={writing.slice(0, 4)} />
+        </section>
+      )}
+
+      {notes.length > 0 && (
+        <section>
+          <SectionHeading title="Recent notes" href="/notes" />
           <ul>
             {notes.slice(0, 5).map((entry) => (
               <NoteRow key={entry.slug} entry={entry} />
             ))}
           </ul>
-        ) : (
-          <EmptyState>
-            Nothing here yet. Add a file to{" "}
-            <code className="font-mono">content/notes/</code>.
-          </EmptyState>
-        )}
-      </section>
+        </section>
+      )}
 
       {work.length > 0 && (
         <section>

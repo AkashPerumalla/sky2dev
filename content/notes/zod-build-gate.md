@@ -3,6 +3,7 @@ title: Validate content at build time, not render time
 summary: Putting a schema over Markdown frontmatter turns a silently broken page into a failed build.
 date: 2026-10-18
 tags: [typescript, zod, process]
+draft: true # written as a format example — replace or delete
 ---
 
 Content with optional-everything types fails quietly: a missing `title` renders

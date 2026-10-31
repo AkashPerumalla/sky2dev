@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   // Makes every relative URL below resolve against your domain.
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role}`,
+    default: `${site.name} — ${site.role}, ${site.specialty}`,
     template: `%s — ${site.name}`,
   },
   description: site.description,

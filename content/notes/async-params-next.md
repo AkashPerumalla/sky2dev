@@ -5,6 +5,7 @@ date: 2026-10-30
 tags: [nextjs, react, typescript]
 source: https://nextjs.org/docs
 sourceLabel: Next.js docs
+draft: true # written as a format example — replace or delete
 ---
 
 Dynamic route props are async:

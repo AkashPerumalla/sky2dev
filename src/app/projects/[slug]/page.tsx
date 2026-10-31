@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getCollection, getEntry } from "@/lib/content";
+import { getEntry, staticParamsFor } from "@/lib/content";
 import type { ProjectData } from "@/lib/content/schema";
 import { entryMetadata } from "@/lib/metadata";
 import { Article } from "@/components/article";
@@ -8,7 +8,7 @@ import { Badge, ExternalLink } from "@/components/ui";
 type Params = { slug: string };
 
 export function generateStaticParams(): Params[] {
-  return getCollection("projects").map((entry) => ({ slug: entry.slug }));
+  return staticParamsFor("projects");
 }
 
 export async function generateMetadata({

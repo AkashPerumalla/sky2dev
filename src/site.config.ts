@@ -11,26 +11,30 @@ export const site = {
   /** Shown under your name on the home page. One line, no period. */
   role: "Software Engineer",
 
+  /** The specialism, shown beside the role and used in the page title. */
+  specialty: "Embedded Android & real-time systems",
+
   /**
    * Your domain. Used for canonical URLs, the sitemap, RSS and social cards.
    * No trailing slash.
    */
-  url: "https://example.com",
+  url: "https://sky2dev.dev",
 
   /** The two-or-three sentence pitch on the home page. */
-  bio: "I build software, write about what I learn along the way, and keep a running log of ideas worth remembering.",
+  bio: "I build production embedded Android and real-time systems — from hardware interfacing over serial, SPI, UART and I2C, through AOSP platform modification, to the Spring Boot services behind them. Four systems architected from requirements to deployment, including a patient monitor in active clinical use and a handheld satellite phone built under India's iDEX defence innovation programme.",
 
   /** Used for <meta description> and the RSS channel description. */
   description:
-    "Personal site of Akash Perumalla — software engineer. Projects, writing, and notes on what I'm learning.",
+    "Akash Perumalla — software engineer working on embedded Android, real-time systems, and the services behind them. Projects, writing, and notes on what I'm learning.",
 
-  email: "akashperumalla143d@gmail.com",
+  email: "akashperumalla0215@gmail.com",
+
+  location: "Hyderabad, Telangana",
 
   /** Order here is the order they render. Drop any you don't use. */
   socials: [
-    { label: "GitHub", href: "https://github.com/" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/" },
-    { label: "X", href: "https://x.com/" },
+    { label: "GitHub", href: "https://github.com/AkashPerumalla" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/akashperumalla0215/" },
   ],
 
   /** Top navigation. Order here is the order they render. */

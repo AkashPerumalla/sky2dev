@@ -21,7 +21,7 @@ export default function WritingPage() {
       {entries.length > 0 ? (
         <EntryList entries={entries} />
       ) : (
-        <EmptyState>No essays published yet.</EmptyState>
+        <EmptyState>First posts coming soon.</EmptyState>
       )}
     </>
   );

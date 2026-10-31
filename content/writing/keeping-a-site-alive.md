@@ -4,6 +4,7 @@ summary: Every abandoned developer blog was abandoned for the same reason, and i
 date: 2026-10-28
 featured: true
 tags: [writing, web, process]
+draft: true # written as a format example — replace or delete
 ---
 
 Every developer I know has a personal site. Most of them have three posts, the

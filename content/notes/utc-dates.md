@@ -3,6 +3,7 @@ title: Format build-time dates in UTC
 summary: "A date-only string parses as UTC midnight, so formatting it in a local timezone west of UTC renders the day before."
 date: 2026-10-26
 tags: [javascript, dates]
+draft: true # written as a format example — replace or delete
 ---
 
 A date-only string parses as UTC midnight. Format it without pinning the

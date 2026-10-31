@@ -25,7 +25,7 @@ export default function NotesPage() {
           ))}
         </ul>
       ) : (
-        <EmptyState>No notes yet.</EmptyState>
+        <EmptyState>First notes coming soon.</EmptyState>
       )}
     </>
   );

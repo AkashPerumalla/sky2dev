@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { getCollection, getEntry } from "@/lib/content";
+import { getEntry, staticParamsFor } from "@/lib/content";
 import { entryMetadata } from "@/lib/metadata";
 import { Article } from "@/components/article";
 
@@ -7,7 +7,7 @@ type Params = { slug: string };
 
 /** Tells the static export which pages to emit. */
 export function generateStaticParams(): Params[] {
-  return getCollection("writing").map((entry) => ({ slug: entry.slug }));
+  return staticParamsFor("writing");
 }
 
 export async function generateMetadata({

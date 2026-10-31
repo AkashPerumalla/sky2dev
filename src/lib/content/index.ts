@@ -216,5 +216,22 @@ export function getEntriesByTag(tag: string): Entry[] {
   );
 }
 
+/**
+ * Params for a collection's dynamic route.
+ *
+ * `output: "export"` refuses a dynamic route that generates zero pages, which
+ * would break the build for any collection you haven't written in yet — an
+ * entirely normal state for a new site, and for one where everything in a
+ * collection is still a draft. Emitting a sentinel slug keeps the route valid;
+ * the page renders a 404 for it, and nothing links to it or lists it.
+ */
+export function staticParamsFor(collection: CollectionName): { slug: string }[] {
+  const entries = getCollection(collection);
+  if (entries.length === 0) return [{ slug: EMPTY_COLLECTION_SLUG }];
+  return entries.map((entry) => ({ slug: entry.slug }));
+}
+
+export const EMPTY_COLLECTION_SLUG = "__empty";
+
 export { collectionNames };
 export type { CollectionName };
