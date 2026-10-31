@@ -67,11 +67,18 @@ export default function HomePage() {
             </li>
           ))}
           <li>
+            {/*
+              Labelled "Email" rather than showing the raw address, so it reads
+              as one of a row of destinations alongside GitHub and LinkedIn.
+              The address itself stays visible as selectable text on /about,
+              for anyone whose machine doesn't handle mailto: links.
+            */}
             <a
               href={`mailto:${site.email}`}
+              title={site.email}
               className="text-muted transition-colors hover:text-accent"
             >
-              {site.email}
+              Email
             </a>
           </li>
         </ul>
